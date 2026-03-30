@@ -12,20 +12,40 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   icons: {
     icon: [
+      // 1. Ưu tiên SVG cho Light Mode (hoặc mặc định)
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: light)',
+      },
+      // 2. Ưu tiên SVG cho Dark Mode
+      {
+        url: '/icon-dark.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: dark)',
+      },
+      // 3. Fallback cho các trình duyệt không hỗ trợ media query trong icon (PNG)
       {
         url: '/icon-light-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
         media: '(prefers-color-scheme: light)',
       },
       {
         url: '/icon-dark-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
         media: '(prefers-color-scheme: dark)',
       },
+    ],
+    // Icon cho thiết bị iOS
+    apple: [
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
       },
     ],
-    apple: '/apple-icon.png',
   },
 }
 
