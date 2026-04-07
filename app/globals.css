@@ -4,43 +4,48 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.09 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.95 0 0);
-  --primary-foreground: oklch(0.09 0 0);
-  --secondary: oklch(0.18 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.6 0.12 230); 
-  --accent-foreground: oklch(0.09 0 0);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.22 0 0);
-  --input: oklch(0.18 0 0);
-  --ring: oklch(0.6 0.12 230);
-  --chart-1: oklch(0.6 0.12 230);
-  --chart-2: oklch(0.65 0.15 200);
-  --chart-3: oklch(0.6 0.15 260);
-  --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.55 0.15 320);
+  /* LIGHT MODE (Mặc định) */
+  --background: oklch(1 0 0);           /* Trắng tinh khôi */
+  --foreground: oklch(0.145 0 0);       /* Đen xám */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);          /* Màu đen chủ đạo */
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
   --radius: 0.5rem;
-  --sidebar: oklch(0.07 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.6 0.12 230);
-  --sidebar-primary-foreground: oklch(0.09 0 0);
-  --sidebar-accent: oklch(0.15 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: oklch(0.6 0.12 230);
-  
+
+  /* Chart Colors cho Light */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar cho Light */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
+  /* DARK MODE (Giá trị cũ của bạn) */
   --background: oklch(0.09 0 0);
   --foreground: oklch(0.95 0 0);
   --card: oklch(0.12 0 0);
@@ -53,26 +58,30 @@
   --secondary-foreground: oklch(0.95 0 0);
   --muted: oklch(0.18 0 0);
   --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.7 0.15 145);
+  --accent: oklch(0.65 0.15 200);
   --accent-foreground: oklch(0.09 0 0);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.95 0 0);
   --border: oklch(0.22 0 0);
   --input: oklch(0.18 0 0);
-  --ring: oklch(0.7 0.15 145);
+  --ring: oklch(0.65 0.15 200);
+
+  /* Chart Colors cho Dark */
   --chart-1: oklch(0.7 0.15 145);
   --chart-2: oklch(0.65 0.15 200);
   --chart-3: oklch(0.6 0.15 260);
   --chart-4: oklch(0.75 0.15 80);
   --chart-5: oklch(0.55 0.15 320);
+
+  /* Sidebar cho Dark */
   --sidebar: oklch(0.07 0 0);
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.7 0.15 145);
+  --sidebar-primary: oklch(0.65 0.15 200);
   --sidebar-primary-foreground: oklch(0.09 0 0);
-  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent: oklch(32.897% 0.00004 271.152);
   --sidebar-accent-foreground: oklch(0.95 0 0);
   --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: oklch(0.7 0.15 145);
+  --sidebar-ring: oklch(0.65 0.15 200);
 }
 
 @theme inline {
@@ -130,11 +139,8 @@
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active {
-    /* Ép background về màu --input của bạn */
     -webkit-box-shadow: 0 0 0 1000px var(--input) inset !important;
-    /* Ép màu chữ về màu --foreground (trắng/xám nhạt) */
     -webkit-text-fill-color: var(--foreground) !important;
-    /* Giữ font đồng bộ */
     font-family: inherit !important;
     transition: background-color 5000s ease-in-out 0s;
   }

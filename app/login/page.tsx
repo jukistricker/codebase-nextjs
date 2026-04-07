@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Key, ArrowRight, Loader2, Lock, User } from "lucide-react";
+import { Shield, ArrowRight, Loader2, Lock, User } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { api } from "@/lib/api-client";
+import { ENDPOINTS } from "@/lib/api-endpoints";
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +24,6 @@ export default function LoginPage() {
   const router = useRouter();
   const { toast } = useToast();
 
-  // Chặn XSS cơ bản: Nếu đã có token thì đá về home luôn, không cho login lại
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (token) router.push("/");
@@ -38,11 +38,13 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await api.post("/auth/login", formData);
+      const response = await api.post(ENDPOINTS.AUTH.LOGIN, formData, { 
+        withAuth: false 
+      });
+      
       const result = await response.json();
 
       if (response.ok && result.status === 200) {
-        // Lưu token vào localStorage
         localStorage.setItem("access_token", result.data);
 
         toast({
@@ -50,13 +52,12 @@ export default function LoginPage() {
           description: "System identity verified. Redirecting...",
         });
 
-        // Dùng replace để người dùng không bấm 'Back' quay lại trang login được
         setTimeout(() => router.replace("/"), 800);
       } else {
         toast({
           variant: "destructive",
           title: "Authentication Failed",
-          description: result.message || "Invalid username or password.",
+          description: result.message || "Invalid credentials.",
         });
       }
     } catch (error) {
@@ -72,7 +73,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background relative overflow-hidden">
-      {/* Background Grid - Phong cách CyberSecurity */}
+      {}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 
       <Card className="w-full max-w-md mx-4 bg-card/60 backdrop-blur-md border-border shadow-2xl relative z-10">
@@ -110,7 +111,6 @@ export default function LoginPage() {
         pl-10 
         transition-all 
         duration-200
-        /* Focus state: Chuyển sang bg-input y hệt CardHeader */
         focus-visible:bg-input
         focus-visible:ring-2 
         focus-visible:ring-ring/30 
@@ -120,7 +120,7 @@ export default function LoginPage() {
       onChange={handleChange}
       disabled={isLoading}
     />
-    {/* Thêm icon User ở đây */}
+    {}
     <User className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground transition-colors group-focus-within:text-ring" />
   </div>
 </div>
@@ -144,7 +144,6 @@ export default function LoginPage() {
         pl-10 
         transition-all 
         duration-200
-        /* Focus state: Chuyển sang bg-input y hệt CardHeader */
         focus-visible:bg-input
         focus-visible:ring-2 
         focus-visible:ring-ring/30 
